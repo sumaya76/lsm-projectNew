@@ -1,0 +1,264 @@
+// =======================================================
+// 🎨 Modern Register Page Styles (Based on Login Page)
+// =======================================================
+
+// ----------------------------
+// 🎨 Color & Design Variables
+// ----------------------------
+$primary: #4f46e5; // Indigo main tone
+$primary-hover: #4338ca; // Darker indigo hover
+$background: #f9fafb; // Light background
+$text-dark: #111827; // Main dark text
+$text-light: #6b7280; // Muted gray text
+$card-bg: #ffffff; // White card
+$radius: 1rem; // Rounded corners
+$shadow: 0 8px 30px rgba(0, 0, 0, 0.08); // Soft shadow
+$transition: 0.3s ease; // Smooth transition speed
+
+// ----------------------------
+// 🌐 Register Page Wrapper
+// ----------------------------
+#register-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #eef2ff, #f9fafb);
+  padding: 2rem;
+
+  // 📱 Tablet view
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
+  // 📱 Mobile view
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
+}
+
+// ----------------------------
+// 💳 Register Card Container
+// ----------------------------
+#register-card {
+  background: $card-bg;
+  padding: 2.5rem 2rem;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  transition: transform $transition, box-shadow $transition;
+
+  // ✨ Hover effect for depth
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  // 📱 Small devices
+  @media (max-width: 576px) {
+    padding: 2rem 1.5rem;
+  }
+
+  // ----------------------------
+  // 🏷️ Title and Subtitle
+  // ----------------------------
+  .title {
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: $text-dark;
+
+    @media (max-width: 480px) {
+      font-size: 1.4rem;
+    }
+  }
+
+  .subtitle {
+    color: $text-light;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  // ----------------------------
+  // 📝 Register Form Styles
+  // ----------------------------
+  .register-form {
+    text-align: left;
+
+    // 📦 Form group container
+    .form-group {
+      margin-bottom: 1.5rem;
+
+      // 🔖 Label for each input
+      label {
+        display: block;
+        font-weight: 500;
+        color: $text-dark;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+
+        @media (max-width: 480px) {
+          font-size: 0.9rem;
+        }
+      }
+
+      // 🧩 Input + Icon field
+      .input-field {
+        position: relative;
+
+        // 👤 Input icon
+        .icon {
+          position: absolute;
+          top: 50%;
+          left: 14px;
+          transform: translateY(-50%);
+          color: $text-light;
+          font-size: 1.1rem;
+
+          @media (max-width: 480px) {
+            font-size: 1rem;
+          }
+        }
+
+        // 🔡 Input element
+        input {
+          width: 100%;
+          padding: 0.8rem 0.8rem 0.8rem 2.5rem;
+          border-radius: 0.6rem;
+          border: 1px solid #d1d5db;
+          background: #f9fafb;
+          font-size: 1rem;
+          color: $text-dark;
+          outline: none;
+          transition: border-color $transition, box-shadow $transition;
+
+          // 🟣 Focus effect
+          &:focus {
+            border-color: $primary;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba($primary, 0.1);
+          }
+
+          // 🔴 Error state input border
+          &.error-input {
+            border-color: #e11d48;
+            background: #fff0f3;
+          }
+
+          @media (max-width: 480px) {
+            font-size: 0.9rem;
+            padding: 0.75rem 0.75rem 0.75rem 2.2rem;
+          }
+        }
+      }
+
+      // ⚠️ Error Message Styling
+      .error {
+        color: #e11d48; // Modern red
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-top: 0.4rem;
+        display: block;
+        animation: fadeIn 0.3s ease;
+
+        @media (max-width: 480px) {
+          font-size: 0.85rem;
+        }
+      }
+    }
+
+    // ----------------------------
+    // 🔘 Submit Button
+    // ----------------------------
+    .btn-register {
+      width: 100%;
+      background: $primary;
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      padding: 0.9rem;
+      border-radius: 0.6rem;
+      transition: background-color $transition, transform $transition;
+
+      &:hover {
+        background: $primary-hover;
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 480px) {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+      }
+    }
+
+    // ----------------------------
+    // 🔗 Login Redirect Text
+    // ----------------------------
+    .login-text {
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+      color: $text-light;
+      text-align: center;
+
+      a {
+        color: $primary;
+        font-weight: 600;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      @media (max-width: 480px) {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+// ----------------------------
+// ✨ Error Message Animation
+// ----------------------------
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ----------------------------
+// 📱 Responsive Adjustments
+// ----------------------------
+@media (max-width: 768px) {
+  #register-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  #register-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  #register-card {
+    .title {
+      font-size: 1.3rem;
+    }
+    .btn-register {
+      font-size: 0.9rem;
+    }
+  }
+}

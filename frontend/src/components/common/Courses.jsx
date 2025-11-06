@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+import Course from './common/Course'
 
 const Courses = () => {
-  return (
-    <div className='container pb-5 pt-3'>
+    const [rating, setRating] = useState(4.0)
+
+    return (
+    <>
+        <Header/>
+            <div className='container pb-5 pt-3'>
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="#">Home</a></li>
@@ -193,6 +199,8 @@ const Courses = () => {
                     </div>
                 </div>
            </div>
+        <Footer/>
+    </>
   )
 }
 

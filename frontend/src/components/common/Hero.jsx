@@ -7,7 +7,7 @@ const Hero = () => {
             <div className="row align-items-center">
                 <div className="col-md-6">
                     <h1 className="display-3 fw-bold">Learn Anytime, Anywhere</h1>
-                    <p className="lead">Join our Learning Management System and explore a wide range of courses to enhance your skills and achieve your goals.</p>
+                    <p className="lead">Unlock your potential with our wide range of online courses — learn anytime, anywhere, at your own pace.</p>
                     <a href="#courses" className="btn btn-white">Explore Courses</a>
                 </div>
                 <div className="col-md-6 text-center">
