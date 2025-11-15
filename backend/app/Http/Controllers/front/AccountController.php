@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\User; // ✅ Import the User model
 use Illuminate\Support\Facades\Hash; // ✅ For password hashing
 
+use Illuminate\Support\Facades\Auth; // ✅ For authentication
 use function Laravel\Prompts\password;
 
 class AccountController extends Controller
@@ -43,5 +44,42 @@ class AccountController extends Controller
             'user' => $user // Return the created user data for confirmation
         ], 200);
     }
+ public function authenticate(Request $request)
+{
+    // ✅ Step 1: Validate user input
+    $validator = Validator::make($request->all(), [
+        'email' => 'required|email',
+        'password' => 'required'
+    ]);
+
+    // ✅ Step 2: Check if validation fails
+    if ($validator->fails()) {
+        return response()->json([
+            'status' => 400,
+            'errors' => $validator->errors()
+        ], 400);
+    }
+
+    // ✅ Step 3: Attempt login
+    $credentials = $request->only('email', 'password');
+
+    if (Auth::attempt($credentials)) {
+        $user = Auth::user(); // Get authenticated user
+        $token = $user->createToken('auth_token')->plainTextToken; // Create API token
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Login successful',
+            'token' => $token,
+            'user' => $user
+        ], 200);
+    } else {
+        return response()->json([
+            'status' => 401,
+            'message' => 'Either email or password is incorrect'
+        ], 401);
+    }
+}
+
    
 }
